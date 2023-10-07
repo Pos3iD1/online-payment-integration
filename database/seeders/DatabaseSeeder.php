@@ -3,7 +3,14 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
+use App\Models\Color;
+use App\Models\Image;
+use App\Models\Product;
+use App\Models\Size;
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Log;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,5 +25,36 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        Category::factory(10)->create();
+
+        Tag::factory(10)->create();
+
+        Color::factory(10)->create();
+
+        Size::factory(5)->create();
+
+        $products = Product::factory(30)
+            ->hasImages(3)
+            ->hasReviews(2)
+            ->create();
+
+        foreach ($products as $product) {
+            foreach (Category::inRandomOrder()->limit(4)->get() as $category) {
+                $product->categories()->attach($category->id);
+            }
+
+            foreach (Tag::inRandomOrder()->limit(4)->get() as $tag) {
+                $product->tags()->attach($tag->id);
+            }
+
+            foreach (Color::inRandomOrder()->limit(3)->get() as $color) {
+                $product->colors()->attach($color->id);
+            }
+
+            foreach (Size::inRandomOrder()->limit(3)->get() as $size) {
+                $product->sizes()->attach($size->id);
+            }
+        }
     }
 }
