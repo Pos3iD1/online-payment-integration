@@ -26,6 +26,16 @@ class Product extends Model
     ];
 
     /**
+     * Count product average ratting
+     *
+     * @return float
+     */
+    public function ratting(): float
+    {
+        return $this->reviews()->average('rating');
+    }
+
+    /**
      * @return HasMany
      */
     public function images(): HasMany
