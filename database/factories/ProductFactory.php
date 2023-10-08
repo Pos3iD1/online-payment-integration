@@ -21,7 +21,7 @@ class ProductFactory extends Factory
             'sku' => fake()->slug(3),
             'price' => fake()->numberBetween(0, 10000),
             'short_description' => fake()->paragraph(),
-            'description' => fake()->text(),
+            'description' => fake()->realTextBetween(500, 1000),
             'discount' => fake()->numberBetween(10, 50),
         ];
     }
