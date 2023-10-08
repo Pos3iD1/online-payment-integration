@@ -23,9 +23,9 @@ Route::get('/about', function () {
     return view('pages.about');
 });
 
-Route::get('/products', function () {
-    return view('pages.products');
-});
+Route::get('/products', [\App\Http\Controllers\Pages\ProductsController::class, 'index']);
+
+Route::get('/products/{id}', [\App\Http\Controllers\Pages\ProductsController::class, 'show']);
 
 Route::get('/blog', function () {
     return view('pages.blog');
