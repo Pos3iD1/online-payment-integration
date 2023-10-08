@@ -2084,7 +2084,9 @@ only screen and (min-width: 768px) and (max-width: 991.98px) {
     font-size: 18px;
     line-height: 1;
     text-align: center;
-    margin-bottom: 30px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    transition: .4s;
 }
 
 .product-item__sale {
@@ -2115,6 +2117,13 @@ only screen and (min-width: 768px) and (max-width: 991.98px) {
 .product-item:hover .product-item__thumb .thumb-primary {
     opacity: 0;
     visibility: hidden;
+    -webkit-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.product-item:hover .product-item__thumb .ratting {
+    margin-top: 30px;
     -webkit-transition: 0.4s;
     -o-transition: 0.4s;
     transition: 0.4s;
@@ -2356,6 +2365,14 @@ only screen and (min-width: 768px) and (max-width: 991.98px) {
 .layout-list .product-item:hover .product-item__content .price {
     opacity: 1;
     visibility: visible;
+}
+
+.layout-list .product-item:hover .product-item__thumb .ratting {
+    margin-top: 55px;
+    margin-bottom: 15px;
+    -webkit-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
 }
 
 /*==========================
