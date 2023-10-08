@@ -147,13 +147,16 @@
                                 </div>
 
                                 <div class="product-item__content">
-                                    {{--{{ /*TODO: count ratting*/ }}--}}
                                     <div class="ratting">
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star-half"></i></span>
+                                        @for($i = 0; $i < floor($bestseller->ratting()); $i++)
+                                            <span><i class="ion-android-star"></i></span>
+                                        @endfor
+                                        @if($bestseller->ratting() - floor($bestseller->ratting()) >= 0.5)
+                                            <span><i class="ion-android-star-half"></i></span>
+                                        @endif
+                                        @for($i = 0; $i < (5 - floor($bestseller->ratting()) - ($bestseller->ratting() - floor($bestseller->ratting()) >= 0.5 ? 1 : 0)); $i++)
+                                            <span><i class="ion-android-star-outline"></i></span>
+                                        @endfor
                                     </div>
                                     <h4 class="title"><a href="/products/{{ $bestseller->id }}">{{ ucfirst($bestseller->name) }}</a></h4>
                                     <span class="price"><strong>Price:</strong> ${{ $bestseller->price }}</span>
@@ -161,9 +164,8 @@
 
                                 <div class="product-item__action">
                                     <button class="btn-add-to-cart"><i class="ion-bag"></i></button>
-                                    <button class="btn-add-to-cart"><i class="ion-ios-loop-strong"></i></button>
                                     <button class="btn-add-to-cart"><i class="ion-ios-heart-outline"></i></button>
-                                    <button class="btn-add-to-cart"><i class="ion-eye"></i></button>
+                                    <a class="btn-add-to-cart" href="/products/{{ $bestseller->id }}"><i class="ion-eye"></i></a>
                                 </div>
 
                                 {{--{{ /*TODO: discount may be null*/ }}--}}
@@ -258,11 +260,15 @@
                                 <div class="product-item__content">
                                     {{--{{ /*TODO: count ratting*/ }}--}}
                                     <div class="ratting">
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star-half"></i></span>
+                                        @for($i = 0; $i < floor($product->ratting()); $i++)
+                                            <span><i class="ion-android-star"></i></span>
+                                        @endfor
+                                        @if($product->ratting() - floor($product->ratting()) >= 0.5)
+                                            <span><i class="ion-android-star-half"></i></span>
+                                        @endif
+                                        @for($i = 0; $i < (5 - floor($product->ratting()) - ($product->ratting() - floor($product->ratting()) >= 0.5 ? 1 : 0)); $i++)
+                                            <span><i class="ion-android-star-outline"></i></span>
+                                        @endfor
                                     </div>
                                     <h4 class="title"><a href="/products/{{ $product->id }}">{{ ucfirst($product->name) }}</a></h4>
                                     <span class="price"><strong>Price:</strong> ${{ $product->price }}</span>
@@ -270,9 +276,8 @@
 
                                 <div class="product-item__action">
                                     <button class="btn-add-to-cart"><i class="ion-bag"></i></button>
-                                    <button class="btn-add-to-cart"><i class="ion-ios-loop-strong"></i></button>
                                     <button class="btn-add-to-cart"><i class="ion-ios-heart-outline"></i></button>
-                                    <button class="btn-add-to-cart"><i class="ion-eye"></i></button>
+                                    <a class="btn-add-to-cart" href="/products/{{ $product->id }}"><i class="ion-eye"></i></a>
                                 </div>
 
                                 {{--{{ /*TODO: discount may be null*/ }}--}}
