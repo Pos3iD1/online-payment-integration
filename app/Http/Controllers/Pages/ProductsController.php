@@ -11,17 +11,51 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ProductsController extends Controller
 {
-    public function index()
+    /**
+     * @param Request $request
+     * @return View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+     */
+    public function index(Request $request): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $pageData = [];
 
-        $pageData['products'] = Product::paginate(12);
+        $pageQueries = [];
+        foreach ($request->query() as $name => $query) {
+            $pageQueries[$name] = explode(',', $query);
+        }
+
+        $products = Product::all();
+
+        if (array_key_exists('color', $pageQueries)) {
+            $products = $products->filter(function ($product) use ($pageQueries) {
+                return !empty(array_intersect($product->colors()->pluck('name')->toArray(), $pageQueries['color']));
+            });
+        }
+
+        if (array_key_exists('category', $pageQueries)) {
+            $products = $products->filter(function ($product) use ($pageQueries) {
+                return !empty(array_intersect($product->categories()->pluck('name')->toArray(), $pageQueries['category']));
+            });
+        }
+
+        if (array_key_exists('tag', $pageQueries)) {
+            $products = $products->filter(function ($product) use ($pageQueries) {
+                return !empty(array_intersect($product->tags()->pluck('name')->toArray(), $pageQueries['tag']));
+            });
+        }
+
+        Log::info(count($products->pluck('id')));
+        Log::info($products->pluck('id'));
+
+        $pageData['products'] = Product::wherein('id', $products->pluck('id'))->paginate(12);
         $pageData['categories'] = Category::all();
         $pageData['tags'] = Tag::all();
         $pageData['colors'] = Color::all();
+        $pageData['queries'] = $pageQueries;
 
         return view('pages.products', $pageData);
     }
