@@ -45,7 +45,7 @@ Route::get('/checkout', function () {
 
 Route::get('/wishlist', function () {
     return view('pages.wishlist');
-});
+})->middleware('auth');
 
 Route::get('/contact', function () {
     return view('pages.contact');
@@ -53,8 +53,14 @@ Route::get('/contact', function () {
 
 Route::get('/register', function () {
     return view('pages.register');
-});
+})->middleware('guest')->name('register');
+
+Route::post('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'store'])->middleware('guest');
 
 Route::get('/login', function () {
     return view('pages.login');
-});
+})->middleware('guest')->name('login');
+
+Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'store'])->middleware('guest');
+
+Route::post('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'destroy'])->middleware('auth')->name('logout');
