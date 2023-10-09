@@ -50,8 +50,19 @@
             <div class="col-sm-8 col-lg-3">
                 <div class="site-action d-flex justify-content-center justify-content-sm-end align-items-center">
                     <ul class="login-reg-nav nav">
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/register">Register</a></li>
+                        @guest
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="/register">Register</a></li>
+                        @endguest
+                        @auth
+                            <li><a href="#">Orders</a></li>
+                            <li>
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    <a href="/logout" onclick="event.preventDefault(); this.closest('form').submit()">Logout</a>
+                                </form>
+                            </li>
+                        @endauth
                     </ul>
 
                     <div class="mini-cart-wrap">
