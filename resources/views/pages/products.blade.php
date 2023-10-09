@@ -131,7 +131,7 @@
                             </div>
 
                             <div class="col-sm-6 text-center text-sm-right">
-                                <p>Showing {{ (($products->currentPage() - 1) * $products->perPage()) + 1 }}–@if(((($products->currentPage() - 1) * $products->perPage()) + 12) > $products->total()) {{ $products->total() }} @else {{ (($products->currentPage() - 1) * $products->perPage()) + 12 }} @endif of {{ $products->total() }} results</p>
+                                <p>Showing {{ (($products->currentPage() - 1) * $products->perPage()) + 1 }}–@if(((($products->currentPage() - 1) * $products->perPage()) + $products->perPage()) > $products->total()) {{ $products->total() }} @else {{ (($products->currentPage() - 1) * $products->perPage()) + $products->perPage() }} @endif of {{ $products->total() }} results</p>
                             </div>
                         </div>
                     </div>
@@ -143,11 +143,10 @@
                             <h4 class="sidebar-title">Filter By Color</h4>
                             <div class="sidebar-body">
                                 <ul class="sidebar-list">
+                                    <li><a href="#" class="query-selector @if(!array_key_exists('color', $queries)) query-selector-selected @endif" query="color" data="all">All Colors</a></li>
                                     @foreach($colors as $color)
-                                        <li><a href="#">{{ ucfirst($color->name) }} <span>({{ $color->products->count() }})</span></a></li>
+                                        <li><a href="#" class="query-selector @if(array_key_exists('color', $queries) && in_array($color->name, $queries['color'])) query-selector-selected @endif" query="color" data="{{ $color->name }}">{{ ucfirst($color->name) }}</a></li>
                                     @endforeach
-                                    <li><a href="#">Blue <span>(3)</span></a></li>
-                                    <li><a href="#">Green <span>(6)</span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -156,9 +155,9 @@
                             <h4 class="sidebar-title">Product categories</h4>
                             <div class="sidebar-body">
                                 <ul class="sidebar-list">
-                                    <li><a href="#">All Product</a></li>
+                                    <li><a href="#" class="query-selector @if(!array_key_exists('category', $queries)) query-selector-selected @endif" query="category" data="all">All Categories</a></li>
                                     @foreach($categories as $category)
-                                        <li><a href="#">{{ ucfirst($category->name) }}</a></li>
+                                        <li><a href="#" class="query-selector @if(array_key_exists('category', $queries) && in_array($category->name, $queries['category'])) query-selector-selected @endif" query="category" data="{{ $category->name }}">{{ ucfirst($category->name) }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -168,8 +167,9 @@
                             <h4 class="sidebar-title">Product tags</h4>
                             <div class="sidebar-body">
                                 <ul class="tags">
+                                    <li><a href="#" class="query-selector @if(!array_key_exists('tag', $queries)) query-selector-selected @endif" query="tag" data="all">All Tags</a></li>
                                     @foreach($tags as $tag)
-                                        <li><a href="#">{{ ucfirst($tag->name) }}</a></li>
+                                        <li><a href="#" class="query-selector @if(array_key_exists('tag', $queries) && in_array($tag->name, $queries['tag'])) query-selector-selected @endif" query="tag" data="{{ $tag->name }}">{{ ucfirst($tag->name) }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
