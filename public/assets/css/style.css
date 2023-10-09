@@ -2998,6 +2998,10 @@ only screen and (min-width: 1200px) {
 .input-item {
     margin-top: 30px;
 }
+.input-item button {
+    width: 100%;
+    margin-bottom: 30px;
+}
 
 .input-item input,
 .input-item textarea {
@@ -3008,6 +3012,16 @@ only screen and (min-width: 1200px) {
     -o-transition: 0.4s;
     transition: 0.4s;
     width: 100%;
+}
+
+.input-item .wrong-input,
+.input-item .wrong-input {
+    border: 1px solid #dc3545;
+}
+
+.input-item .wrong-input-text,
+.input-item .wrong-input-text {
+    color: #dc3545;
 }
 
 .input-item input:focus,
@@ -3032,6 +3046,10 @@ only screen and (min-width: 1200px) {
     border-radius: 2px;
     margin-top: 10px;
     letter-spacing: 1.6px;
+}
+
+.checkbox-item {
+    margin-top: 10px;
 }
 
 .contact-map-wrapper {
@@ -4550,4 +4568,182 @@ Start Comment Area Wrapper
 
 .single-comment-wrap .comment-footer a.btn-reply:hover {
     color: #eeb644;
+}
+
+.register-wrap {
+    margin-top: 90px;
+    margin-bottom: 90px;
+    padding: 50px;
+    border: 1px solid #e1e1e1;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+    .register-wrap {
+        margin-top: 60px;
+    }
+}
+
+@media only screen and (max-width: 767.98px) {
+    .register-wrap {
+        margin-top: 40px;
+    }
+}
+
+.register-wrap h2 {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1;
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 46px;
+}
+
+@media only screen and (max-width: 767.98px) {
+    .register-wrap h2 {
+        margin-bottom: 26px;
+    }
+}
+
+.register-wrap h2:before {
+    background-color: #1b1b1c;
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 50px;
+}
+
+.register-form-wrap .form-input-item {
+    margin-top: 40px;
+}
+
+.register-form-wrap .form-input-item input,
+.register-form-wrap .form-input-item textarea {
+    font-size: 16px;
+    padding: 5px 0;
+}
+
+.register-form-wrap .form-input-item input::-webkit-input-placeholder,
+.register-form-wrap .form-input-item textarea::-webkit-input-placeholder {
+    color: #303030;
+}
+
+.register-form-wrap .form-input-item input::-moz-placeholder,
+.register-form-wrap .form-input-item textarea::-moz-placeholder {
+    color: #303030;
+}
+
+.register-form-wrap .form-input-item input:-ms-input-placeholder,
+.register-form-wrap .form-input-item textarea:-ms-input-placeholder {
+    color: #303030;
+}
+
+.register-form-wrap .form-input-item input::-ms-input-placeholder,
+.register-form-wrap .form-input-item textarea::-ms-input-placeholder {
+    color: #303030;
+}
+
+.register-form-wrap .form-input-item input::placeholder,
+.register-form-wrap .form-input-item textarea::placeholder {
+    color: #303030;
+}
+
+.register-form-wrap .form-input-item .nice-select:after {
+    border-right-color: #303030;
+    border-bottom-color: #303030;
+}
+
+.register-form-wrap .form-input-item .nice-select .current {
+    font-size: 16px;
+    color: #303030;
+}
+
+.login-wrap {
+    margin-top: 90px;
+    margin-bottom: 90px;
+    padding: 50px;
+    border: 1px solid #e1e1e1;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+    .login-wrap {
+        margin-top: 60px;
+    }
+}
+
+@media only screen and (max-width: 767.98px) {
+    .login-wrap {
+        margin-top: 40px;
+    }
+}
+
+.login-wrap h2 {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1;
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 46px;
+}
+
+@media only screen and (max-width: 767.98px) {
+    .login-wrap h2 {
+        margin-bottom: 26px;
+    }
+}
+
+.login-wrap h2:before {
+    background-color: #1b1b1c;
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 50px;
+}
+
+.login-form-wrap .form-input-item {
+    margin-top: 40px;
+}
+
+.login-form-wrap .form-input-item input,
+.login-form-wrap .form-input-item textarea {
+    font-size: 16px;
+    padding: 5px 0;
+}
+
+.login-form-wrap .form-input-item input::-webkit-input-placeholder,
+.login-form-wrap .form-input-item textarea::-webkit-input-placeholder {
+    color: #303030;
+}
+
+.login-form-wrap .form-input-item input::-moz-placeholder,
+.login-form-wrap .form-input-item textarea::-moz-placeholder {
+    color: #303030;
+}
+
+.login-form-wrap .form-input-item input:-ms-input-placeholder,
+.login-form-wrap .form-input-item textarea:-ms-input-placeholder {
+    color: #303030;
+}
+
+.login-form-wrap .form-input-item input::-ms-input-placeholder,
+.login-form-wrap .form-input-item textarea::-ms-input-placeholder {
+    color: #303030;
+}
+
+.login-form-wrap .form-input-item input::placeholder,
+.login-form-wrap .form-input-item textarea::placeholder {
+    color: #303030;
+}
+
+.login-form-wrap .form-input-item .nice-select:after {
+    border-right-color: #303030;
+    border-bottom-color: #303030;
+}
+
+.login-form-wrap .form-input-item .nice-select .current {
+    font-size: 16px;
+    color: #303030;
 }
