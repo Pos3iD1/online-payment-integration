@@ -3189,6 +3189,14 @@ only screen and (min-width: 1200px) {
     font-weight: 500;
 }
 
+.sidebar-list li .query-selector-selected {
+    color: #eeb644;
+}
+
+.sidebar-list li .query-selector-selected:hover {
+    color: #000000;
+}
+
 .sidebar-list li a:hover {
     color: #eeb644;
 }
@@ -3318,6 +3326,16 @@ only screen and (min-width: 1200px) {
 .tags li a:hover {
     color: #eeb644;
     border-color: #eeb644;
+}
+
+.tags li .query-selector-selected {
+    color: #eeb644;
+    border-color: #eeb644;
+}
+
+.tags li .query-selector-selected:hover {
+    color: #000000;
+    border-color: #000000;
 }
 
 /*================================
