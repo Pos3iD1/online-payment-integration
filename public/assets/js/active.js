@@ -15,6 +15,7 @@
     08. Shop Layout Change
     09. Product Quantity
     10. Checkout Page Checkbox Accordion
+    11. Products filtering
 
     ==================================*/
 
@@ -255,6 +256,43 @@
 
         $("#ship_to_different").on("change", function() {
             $(".ship-to-different").slideToggle("100");
+        });
+
+        /*--------------------------------------
+          11. Products filtering
+        ----------------------------------------*/
+        $('.query-selector').on('click', function(e) {
+            e.preventDefault();
+
+            let searchParams = new URLSearchParams(window.location.search);
+            let currentSearchParams = searchParams.get(e.currentTarget.attributes['query'].value);
+
+            if (e.currentTarget.attributes['data'].value === "all") {
+                searchParams.delete(e.currentTarget.attributes['query'].value);
+                window.location.search = searchParams.toString();
+                return;
+            }
+
+            if(currentSearchParams && currentSearchParams.split(',').includes(e.currentTarget.attributes['data'].value))
+            {
+                let currentSearchParamsSplited = currentSearchParams.split(',').filter(function ($item) { return $item !== e.currentTarget.attributes['data'].value; });
+                if (currentSearchParamsSplited.length) {
+                    searchParams.set(e.currentTarget.attributes['query'].value, currentSearchParamsSplited.join(','));
+                } else {
+                    searchParams.delete(e.currentTarget.attributes['query'].value);
+                }
+                window.location.search = searchParams.toString();
+                return;
+            }
+
+            if (currentSearchParams) {
+                currentSearchParams += ',' + e.currentTarget.attributes['data'].value;
+            } else {
+                currentSearchParams = e.currentTarget.attributes['data'].value;
+            }
+
+            searchParams.set(e.currentTarget.attributes['query'].value, currentSearchParams);
+            window.location.search = searchParams.toString();
         });
 
 
