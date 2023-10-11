@@ -9,8 +9,10 @@ use App\Models\Image;
 use App\Models\Product;
 use App\Models\Size;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Log;
+use function Illuminate\Events\queueable;
 
 class DatabaseSeeder extends Seeder
 {
@@ -55,6 +57,16 @@ class DatabaseSeeder extends Seeder
             foreach (Size::inRandomOrder()->limit(3)->get() as $size) {
                 $product->sizes()->attach($size->id);
             }
+        }
+
+         $user = User::factory()->create([
+             'name' => 'Test User',
+             'email' => 'test@example.com',
+         ]);
+
+        foreach (Product::inRandomOrder()->limit(10)->get() as $product)
+        {
+            $user->wishes()->attach($product->id);
         }
     }
 }
