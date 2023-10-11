@@ -47,6 +47,10 @@ Route::get('/wishlist', function () {
     return view('pages.wishlist');
 })->middleware('auth');
 
+Route::post('/wish/{id}', [\App\Http\Controllers\Wishlist\WishlistController::class, 'wish'])->middleware('auth')->name('wish');
+
+Route::post('/unwish/{id}', [\App\Http\Controllers\Wishlist\WishlistController::class, 'unwish'])->middleware('auth')->name('unwish');
+
 Route::get('/contact', function () {
     return view('pages.contact');
 });
