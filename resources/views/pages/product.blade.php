@@ -97,6 +97,24 @@
                                         <h5 class="price"><strong>Price:</strong> <span class="price-amount">${{ $product->price }}</span>
                                         </h5>
                                         <p>{{ $product->short_description }}</p>
+                                        <div class="product-action">
+                                            <div class="action-top d-sm-flex">
+                                                @if(Auth::user() && Auth::user()->wishes->contains($product->id))
+                                                    <form action="{{ route('unwish', ['id' => $product->id]) }}"
+                                                          method="post">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-bordered">Remove from Wishlist</button>
+                                                    </form>
+                                                @else
+                                                    <form action="{{ route('wish', ['id' => $product->id]) }}"
+                                                          method="post">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-bordered">Add to Wishlist</button>
+                                                    </form>
+                                                @endif
+
+                                            </div>
+                                        </div>
 {{--                                        <p>Pursue pleasure rationally encounter consequences that are extremely painful. Nor--}}
 {{--                                            again is there anyone who loves or pursues or desires to obtain pain of itself,--}}
 {{--                                            because it is pain, but because occasionally circles occur in and pain can--}}
@@ -135,7 +153,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="product-action">
+                                        <div class="product-action mb-3">
                                             <div class="action-top d-sm-flex">
                                                 <div class="pro-qty mr-3 mb-4 mb-sm-0">
                                                     <label for="quantity" class="sr-only">Quantity</label>
