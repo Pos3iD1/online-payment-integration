@@ -164,7 +164,19 @@
 
                                 <div class="product-item__action">
                                     <button class="btn-add-to-cart"><i class="ion-bag"></i></button>
-                                    <button class="btn-add-to-cart"><i class="ion-ios-heart-outline"></i></button>
+                                    @if(Auth::user() && Auth::user()->wishes->contains($bestseller->id))
+                                        <form action="{{ route('unwish', ['id' => $bestseller->id]) }}"
+                                              method="post">
+                                            @csrf
+                                            <button type="submit" class="btn-add-to-cart"><i class="ion-ios-heart"></i></button>
+                                        </form>
+                                    @else
+                                        <form action="{{ route('wish', ['id' => $bestseller->id]) }}"
+                                              method="post">
+                                            @csrf
+                                            <button type="submit" class="btn-add-to-cart"><i class="ion-ios-heart-outline"></i></button>
+                                        </form>
+                                    @endif
                                     <a class="btn-add-to-cart" href="/products/{{ $bestseller->id }}"><i class="ion-eye"></i></a>
                                 </div>
 
@@ -276,7 +288,19 @@
 
                                 <div class="product-item__action">
                                     <button class="btn-add-to-cart"><i class="ion-bag"></i></button>
-                                    <button class="btn-add-to-cart"><i class="ion-ios-heart-outline"></i></button>
+                                    @if(Auth::user() && Auth::user()->wishes->contains($product->id))
+                                        <form action="{{ route('unwish', ['id' => $product->id]) }}"
+                                              method="post">
+                                            @csrf
+                                            <button type="submit" class="btn-add-to-cart"><i class="ion-ios-heart"></i></button>
+                                        </form>
+                                    @else
+                                        <form action="{{ route('wish', ['id' => $product->id]) }}"
+                                              method="post">
+                                            @csrf
+                                            <button type="submit" class="btn-add-to-cart"><i class="ion-ios-heart-outline"></i></button>
+                                        </form>
+                                    @endif
                                     <a class="btn-add-to-cart" href="/products/{{ $product->id }}"><i class="ion-eye"></i></a>
                                 </div>
 
